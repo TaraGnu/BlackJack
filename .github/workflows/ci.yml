@@ -8,7 +8,7 @@ on:
 
 env:
   DOTNET_VERSION: '8.0.x' 
-  SOLUTION_FILE: 'BlackJack.sln' 
+  SOLUTION_FILE: 'Blackjack.sln' 
 
 jobs:
   build:
