@@ -10,7 +10,7 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Build App
-      runs: dotnet build BlackJack/BlackJack.csproj
+      run: dotnet build BlackJack/BlackJack.csproj
   
   test:
     needs: build
