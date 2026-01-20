@@ -32,10 +32,10 @@ jobs:
       run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Debug
 
   test-release:
-  needs: build-release
-  runs-on: windows-latest
+    needs: build-release
+    runs-on: windows-latest
 
-  steps:
+    steps:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Run tests
