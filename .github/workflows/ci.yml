@@ -3,16 +3,7 @@ name: Workflow
 on: [push]
 
 jobs:
-  build-debug:
-    runs-on: windows-latest
-
-    steps:
-    - name: checkout code
-      uses: actions/checkout@v4
-    - name: Build App
-      run: dotnet build BlackJack/BlackJack.csproj
-
-  build-release:
+  build:
     runs-on: windows-latest
 
     steps:
@@ -22,7 +13,7 @@ jobs:
       run: dotnet build BlackJack/BlackJack.csproj
 
   test-debug:
-    needs: build-debug
+    needs: build
     runs-on: windows-latest
 
     steps:
@@ -32,7 +23,7 @@ jobs:
       run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Debug
 
   test-release:
-    needs: build-release
+    needs: build
     runs-on: windows-latest
 
     steps:
