@@ -1,6 +1,8 @@
 name: Workflow
 
-on: [pull-request]
+on:
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build-debug:
