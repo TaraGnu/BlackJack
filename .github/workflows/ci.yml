@@ -31,9 +31,13 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Run tests
-      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Debug\
-          --collect:"XPlat Code Coverage"\
-          --results-directory ./Artifacts/
+      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Debug --collect:"XPlat Code Coverage" --results-directory ./Artifacts/
+    
+    - name: Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-debug
+        path: ./Artifacts/**/coverage.cobertura.xml
 
   test-release:
     needs: build-release
@@ -43,7 +47,10 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Run tests
-      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Release\
-          --collect:"XPlat Code Coverage"\
-          --results-directory ./Artifacts/
-
+      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Release --collect:"XPlat Code Coverage" --results-directory ./Artifacts/
+    
+    - name: Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-debug
+        path: ./Artifacts/**/coverage.cobertura.xml
