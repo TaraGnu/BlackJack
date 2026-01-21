@@ -12,7 +12,7 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Build App
-      run: dotnet build BlackJack/BlackJack.csproj
+      run: dotnet build BlackJack/BlackJack.csproj --configuration Debug
 
   build-release:
     runs-on: windows-latest
@@ -21,7 +21,7 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Build App
-      run: dotnet build BlackJack/BlackJack.csproj
+      run: dotnet build BlackJack/BlackJack.csproj --configuration Release
 
   test-debug:
     needs: build-debug
@@ -47,10 +47,10 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v4
     - name: Run tests
-      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Release --collect:"XPlat Code Coverage" --results-directory ./Artifacts/
+      run: dotnet test BlackJack.Tests/BlackJack.Tests.csproj --configuration Release --collect:"XPlat Code Coverage" --results-directory ./Artifacts_release/
     
     - name: Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: coverage-debug
-        path: ./Artifacts/**/coverage.cobertura.xml
+        name: coverage-release
+        path: ./Artifacts_release/**/coverage.cobertura.xml
